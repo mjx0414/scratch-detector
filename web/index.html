@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>屏幕医生 · 手机划痕检测</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand">
+    <div class="brand-icon">🔍</div>
+    <div>
+      <div class="brand-title">屏幕医生</div>
+      <div class="brand-sub">手机划痕智能检测</div>
+    </div>
+  </div>
+  <div class="topbar-right">
+    <span class="live-dot on"></span><span>检测引擎就绪</span>
+    <button class="present-btn" id="present-btn">⛶ 演讲模式</button>
+  </div>
+</div>
+
+<header class="hero">
+  <h1>拍张手机屏幕，<span>AI 帮你找划痕</span></h1>
+  <p>上传一张手机屏幕照片，算法会把每道划痕框出来，量出它有多长、什么方向。真实图像处理，不是动画。</p>
+  <div class="hero-stats">
+    <div class="stat"><b id="stat-recall">—</b><span>划痕检出率</span></div>
+    <div class="stat"><b id="stat-precision">—</b><span>判断准确率</span></div>
+    <div class="stat"><b id="stat-error">—</b><span>长度测量误差</span></div>
+    <div class="stat"><b id="stat-speed">—</b><span>单张耗时</span></div>
+  </div>
+  <div class="stat-note" id="stat-note">以上指标来自 12 道人工标注划痕的真实检测实验</div>
+</header>
+
+<main class="workbench">
+  <section class="panel image-panel">
+    <div class="panel-head">
+      <h2>① 选一张屏幕照片</h2>
+      <span class="hint">内置模拟屏幕图，也可上传自己的照片</span>
+    </div>
+    <div class="examples">
+      <div class="example-label">试试这些：</div>
+      <div class="example-list" id="example-list"></div>
+    </div>
+    <div class="upload-row">
+      <label class="upload-btn">📁 上传自己的屏幕照片
+        <input type="file" id="file-input" accept="image/*" hidden>
+      </label>
+    </div>
+    <div class="canvas-wrap" id="canvas-wrap">
+      <div class="canvas-placeholder" id="placeholder">
+        <div class="ph-icon">📱</div>
+        <div>点示例图，或上传一张手机屏幕照片</div>
+      </div>
+      <div class="media-stage" id="media-stage" hidden>
+        <img id="target-image" alt="待检测屏幕">
+        <svg id="overlay" preserveAspectRatio="none"></svg>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel result-panel">
+    <div class="panel-head"><h2>② 开始检测</h2></div>
+    <div class="control-box">
+      <div class="slider-label">
+        <span>检测灵敏度</span>
+        <b id="sens-value">标准</b>
+      </div>
+      <input type="range" id="sens-slider" min="5" max="20" value="10" step="1">
+      <div class="slider-ends"><span>宽松（连浅划痕也找）</span><span>严格（只找明显的）</span></div>
+      <button class="detect-btn" id="detect-btn">🔍 开始检测</button>
+      <div class="detect-meta" id="detect-meta">选一张图片后点击按钮</div>
+    </div>
+    <div class="result-head">
+      <h3>检测到的划痕</h3>
+      <span id="result-count" class="result-count">—</span>
+    </div>
+    <div class="result-list" id="result-list">
+      <div class="result-empty">检测结果会显示在这里</div>
+    </div>
+  </section>
+</main>
+
+<section class="how">
+  <h2>它是怎么找到划痕的？</h2>
+  <p class="how-lead">四步，用人话讲清楚：</p>
+  <div class="how-steps">
+    <div class="how-step">
+      <div class="step-num">1</div><div class="step-emoji">🌗</div>
+      <h3>去掉屏幕的明暗渐变</h3>
+      <p>屏幕有反光和明暗，先算出一个"局部背景"，把背景减掉，只留下突然变化的细节。</p>
+    </div>
+    <div class="how-step">
+      <div class="step-num">2</div><div class="step-emoji">✏️</div>
+      <h3>把细线连起来</h3>
+      <p>划痕是细线，可能断成几截。把挨得近的碎片连成一条完整的线。</p>
+    </div>
+    <div class="how-step">
+      <div class="step-num">3</div><div class="step-emoji">📐</div>
+      <h3>量长度和宽度</h3>
+      <p>对每条候选线，用一个"旋转的尺子"贴着它量，得到真实长度、宽度和方向。</p>
+    </div>
+    <div class="how-step">
+      <div class="step-num">4</div><div class="step-emoji">✅</div>
+      <h3>挑出真正的划痕</h3>
+      <p>太长太宽的是反光，太短的是噪点。只留下"又细又长"的——那就是划痕。</p>
+    </div>
+  </div>
+</section>
+
+<section class="experiment">
+  <h2>检测得准不准？用实验说话</h2>
+  <p class="how-lead">我们画了 12 道已知位置和长度的划痕，让算法去找，然后逐条比对：</p>
+  <div class="exp-table-wrap">
+    <table class="exp-table">
+      <thead><tr><th>测试图</th><th>真值划痕</th><th>正确检出</th><th>检出率</th><th>准确率</th><th>耗时</th></tr></thead>
+      <tbody id="exp-tbody"></tbody>
+    </table>
+  </div>
+  <div class="exp-honest" id="exp-honest"></div>
+</section>
+
+<footer>
+  <div>基于 OpenCV 形态学 + 旋转矩形量测 · 划痕由算法实时检测，非预先录制</div>
+  <div class="footer-tip">上台提示：按 <kbd>P</kbd> 全屏，调灵敏度滑块展示实时检测</div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
