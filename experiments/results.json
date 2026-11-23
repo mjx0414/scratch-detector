@@ -1,0 +1,117 @@
+{
+  "summary": {
+    "totalTruth": 44,
+    "totalDetected": 44,
+    "totalMatched": 44,
+    "recall": 1.0,
+    "precision": 1.0,
+    "meanLengthErrorPx": 1.98,
+    "meanAngleErrorDeg": 0.0,
+    "avgTimeMs": 29.7
+  },
+  "perImage": [
+    {
+      "image": "screen_1.jpg",
+      "truth": 4,
+      "detected": 4,
+      "matched": 4,
+      "recall": 1.0,
+      "precision": 1.0,
+      "tookMs": 41.6
+    },
+    {
+      "image": "screen_2.jpg",
+      "truth": 5,
+      "detected": 5,
+      "matched": 5,
+      "recall": 1.0,
+      "precision": 1.0,
+      "tookMs": 28.6
+    },
+    {
+      "image": "screen_3.jpg",
+      "truth": 3,
+      "detected": 3,
+      "matched": 3,
+      "recall": 1.0,
+      "precision": 1.0,
+      "tookMs": 27.4
+    },
+    {
+      "image": "screen_4.jpg",
+      "truth": 4,
+      "detected": 4,
+      "matched": 4,
+      "recall": 1.0,
+      "precision": 1.0,
+      "tookMs": 27.6
+    },
+    {
+      "image": "screen_5.jpg",
+      "truth": 4,
+      "detected": 4,
+      "matched": 4,
+      "recall": 1.0,
+      "precision": 1.0,
+      "tookMs": 31.3
+    },
+    {
+      "image": "screen_6.jpg",
+      "truth": 4,
+      "detected": 4,
+      "matched": 4,
+      "recall": 1.0,
+      "precision": 1.0,
+      "tookMs": 30.8
+    },
+    {
+      "image": "screen_7.jpg",
+      "truth": 4,
+      "detected": 4,
+      "matched": 4,
+      "recall": 1.0,
+      "precision": 1.0,
+      "tookMs": 27.1
+    },
+    {
+      "image": "screen_8.jpg",
+      "truth": 3,
+      "detected": 3,
+      "matched": 3,
+      "recall": 1.0,
+      "precision": 1.0,
+      "tookMs": 25.6
+    },
+    {
+      "image": "screen_9.jpg",
+      "truth": 5,
+      "detected": 5,
+      "matched": 5,
+      "recall": 1.0,
+      "precision": 1.0,
+      "tookMs": 32.1
+    },
+    {
+      "image": "screen_10.jpg",
+      "truth": 4,
+      "detected": 4,
+      "matched": 4,
+      "recall": 1.0,
+      "precision": 1.0,
+      "tookMs": 25.6
+    },
+    {
+      "image": "screen_11.jpg",
+      "truth": 4,
+      "detected": 4,
+      "matched": 4,
+      "recall": 1.0,
+      "precision": 1.0,
+      "tookMs": 28.4
+    }
+  ],
+  "config": {
+    "sensitivity": 1.0,
+    "iouMatchThreshold": 0.15
+  }
+}
