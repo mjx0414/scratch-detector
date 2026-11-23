@@ -1,0 +1,574 @@
+{
+  "screen_1.jpg": {
+    "size": [
+      900,
+      1600
+    ],
+    "scratches": [
+      {
+        "box": [
+          120,
+          300,
+          283,
+          376
+        ],
+        "length": 180,
+        "angle": 25,
+        "type": "dark"
+      },
+      {
+        "box": [
+          600,
+          378,
+          768,
+          520
+        ],
+        "length": 220,
+        "angle": -40,
+        "type": "dark"
+      },
+      {
+        "box": [
+          200,
+          900,
+          226,
+          1047
+        ],
+        "length": 150,
+        "angle": 80,
+        "type": "dark"
+      },
+      {
+        "box": [
+          560,
+          1150,
+          759,
+          1167
+        ],
+        "length": 200,
+        "angle": 5,
+        "type": "dark"
+      }
+    ]
+  },
+  "screen_2.jpg": {
+    "size": [
+      900,
+      1600
+    ],
+    "scratches": [
+      {
+        "box": [
+          150,
+          240,
+          406,
+          285
+        ],
+        "length": 260,
+        "angle": 10,
+        "type": "dark"
+      },
+      {
+        "box": [
+          430,
+          540,
+          488,
+          700
+        ],
+        "length": 170,
+        "angle": -70,
+        "type": "dark"
+      },
+      {
+        "box": [
+          620,
+          1000,
+          718,
+          1098
+        ],
+        "length": 140,
+        "angle": 45,
+        "type": "dark"
+      },
+      {
+        "box": [
+          180,
+          1250,
+          363,
+          1300
+        ],
+        "length": 190,
+        "angle": -15,
+        "type": "dark"
+      },
+      {
+        "box": [
+          500,
+          420,
+          504,
+          539
+        ],
+        "length": 120,
+        "angle": 88,
+        "type": "dark"
+      }
+    ]
+  },
+  "screen_3.jpg": {
+    "size": [
+      900,
+      1600
+    ],
+    "scratches": [
+      {
+        "box": [
+          300,
+          260,
+          473,
+          360
+        ],
+        "length": 200,
+        "angle": -30,
+        "type": "dark"
+      },
+      {
+        "box": [
+          250,
+          820,
+          370,
+          1027
+        ],
+        "length": 240,
+        "angle": 60,
+        "type": "dark"
+      },
+      {
+        "box": [
+          580,
+          1220,
+          730,
+          1274
+        ],
+        "length": 160,
+        "angle": 20,
+        "type": "dark"
+      }
+    ]
+  },
+  "screen_4.jpg": {
+    "size": [
+      900,
+      1600
+    ],
+    "scratches": [
+      {
+        "box": [
+          180,
+          260,
+          382,
+          314
+        ],
+        "length": 210,
+        "angle": 15,
+        "type": "dark"
+      },
+      {
+        "box": [
+          560,
+          362,
+          756,
+          500
+        ],
+        "length": 240,
+        "angle": -35,
+        "type": "dark"
+      },
+      {
+        "box": [
+          220,
+          880,
+          284,
+          1058
+        ],
+        "length": 190,
+        "angle": 70,
+        "type": "dark"
+      },
+      {
+        "box": [
+          600,
+          1170,
+          767,
+          1200
+        ],
+        "length": 170,
+        "angle": -10,
+        "type": "dark"
+      }
+    ]
+  },
+  "screen_5.jpg": {
+    "size": [
+      900,
+      1600
+    ],
+    "scratches": [
+      {
+        "box": [
+          200,
+          222,
+          408,
+          320
+        ],
+        "length": 230,
+        "angle": -25,
+        "type": "dark"
+      },
+      {
+        "box": [
+          540,
+          640,
+          643,
+          787
+        ],
+        "length": 180,
+        "angle": 55,
+        "type": "bright"
+      },
+      {
+        "box": [
+          300,
+          1050,
+          549,
+          1071
+        ],
+        "length": 250,
+        "angle": 5,
+        "type": "dark"
+      },
+      {
+        "box": [
+          650,
+          400,
+          676,
+          547
+        ],
+        "length": 150,
+        "angle": 80,
+        "type": "dark"
+      }
+    ]
+  },
+  "screen_6.jpg": {
+    "size": [
+      900,
+      1600
+    ],
+    "scratches": [
+      {
+        "box": [
+          150,
+          315,
+          391,
+          380
+        ],
+        "length": 250,
+        "angle": -15,
+        "type": "dark"
+      },
+      {
+        "box": [
+          520,
+          720,
+          673,
+          848
+        ],
+        "length": 200,
+        "angle": 40,
+        "type": "dark"
+      },
+      {
+        "box": [
+          250,
+          900,
+          365,
+          1100
+        ],
+        "length": 230,
+        "angle": -60,
+        "type": "dark"
+      },
+      {
+        "box": [
+          600,
+          300,
+          643,
+          464
+        ],
+        "length": 170,
+        "angle": 75,
+        "type": "dark"
+      }
+    ]
+  },
+  "screen_7.jpg": {
+    "size": [
+      900,
+      1600
+    ],
+    "scratches": [
+      {
+        "box": [
+          180,
+          280,
+          370,
+          390
+        ],
+        "length": 220,
+        "angle": 30,
+        "type": "dark"
+      },
+      {
+        "box": [
+          480,
+          454,
+          602,
+          600
+        ],
+        "length": 190,
+        "angle": -50,
+        "type": "bright"
+      },
+      {
+        "box": [
+          300,
+          900,
+          536,
+          941
+        ],
+        "length": 240,
+        "angle": 10,
+        "type": "dark"
+      },
+      {
+        "box": [
+          620,
+          1092,
+          647,
+          1250
+        ],
+        "length": 160,
+        "angle": -80,
+        "type": "dark"
+      }
+    ]
+  },
+  "screen_8.jpg": {
+    "size": [
+      900,
+      1600
+    ],
+    "scratches": [
+      {
+        "box": [
+          140,
+          340,
+          393,
+          432
+        ],
+        "length": 270,
+        "angle": 20,
+        "type": "dark"
+      },
+      {
+        "box": [
+          500,
+          517,
+          662,
+          680
+        ],
+        "length": 230,
+        "angle": -45,
+        "type": "dark"
+      },
+      {
+        "box": [
+          260,
+          1150,
+          365,
+          1376
+        ],
+        "length": 250,
+        "angle": 65,
+        "type": "dark"
+      }
+    ]
+  },
+  "screen_9.jpg": {
+    "size": [
+      900,
+      1600
+    ],
+    "scratches": [
+      {
+        "box": [
+          120,
+          250,
+          275,
+          358
+        ],
+        "length": 190,
+        "angle": 35,
+        "type": "dark"
+      },
+      {
+        "box": [
+          400,
+          428,
+          540,
+          480
+        ],
+        "length": 150,
+        "angle": -20,
+        "type": "dark"
+      },
+      {
+        "box": [
+          620,
+          760,
+          710,
+          915
+        ],
+        "length": 180,
+        "angle": 60,
+        "type": "dark"
+      },
+      {
+        "box": [
+          200,
+          802,
+          271,
+          1000
+        ],
+        "length": 210,
+        "angle": -70,
+        "type": "dark"
+      },
+      {
+        "box": [
+          520,
+          1280,
+          684,
+          1323
+        ],
+        "length": 170,
+        "angle": 15,
+        "type": "dark"
+      }
+    ]
+  },
+  "screen_10.jpg": {
+    "size": [
+      900,
+      1600
+    ],
+    "scratches": [
+      {
+        "box": [
+          160,
+          210,
+          367,
+          330
+        ],
+        "length": 240,
+        "angle": -30,
+        "type": "dark"
+      },
+      {
+        "box": [
+          520,
+          560,
+          668,
+          708
+        ],
+        "length": 210,
+        "angle": 45,
+        "type": "dark"
+      },
+      {
+        "box": [
+          280,
+          950,
+          476,
+          984
+        ],
+        "length": 200,
+        "angle": 10,
+        "type": "dark"
+      },
+      {
+        "box": [
+          600,
+          1016,
+          676,
+          1180
+        ],
+        "length": 180,
+        "angle": -65,
+        "type": "dark"
+      }
+    ]
+  },
+  "screen_11.jpg": {
+    "size": [
+      900,
+      1600
+    ],
+    "scratches": [
+      {
+        "box": [
+          200,
+          300,
+          408,
+          397
+        ],
+        "length": 230,
+        "angle": 25,
+        "type": "dark"
+      },
+      {
+        "box": [
+          560,
+          497,
+          705,
+          620
+        ],
+        "length": 190,
+        "angle": -40,
+        "type": "bright"
+      },
+      {
+        "box": [
+          240,
+          1020,
+          278,
+          1236
+        ],
+        "length": 220,
+        "angle": 80,
+        "type": "dark"
+      },
+      {
+        "box": [
+          480,
+          1286,
+          639,
+          1300
+        ],
+        "length": 160,
+        "angle": -5,
+        "type": "dark"
+      }
+    ]
+  }
+}
