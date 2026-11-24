@@ -13,7 +13,7 @@ from detector import detect_scratches
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 WEB = os.path.join(ROOT, "web")
-EXAMPLES = os.path.join(ROOT, "examples")
+EXAMPLES = os.path.join(ROOT, "examples_black")
 
 app = Flask(__name__, static_folder=None)
 
@@ -37,7 +37,7 @@ def examples():
         n = os.path.basename(p)
         m = re.search(r"(\d+)", n)
         return (int(m.group(1)) if m else 999, n)
-    for path in sorted(glob.glob(os.path.join(EXAMPLES, "screen_*.jpg")), key=order):
+    for path in sorted(glob.glob(os.path.join(EXAMPLES, "black_screen_*.jpg")), key=order):
         with open(path, "rb") as f:
             b64 = base64.b64encode(f.read()).decode()
         out.append({"name": os.path.basename(path),
@@ -77,7 +77,7 @@ def detect():
 
 @app.route("/api/results")
 def results():
-    with open(os.path.join(ROOT, "experiments", "results.json"), encoding="utf-8") as f:
+    with open(os.path.join(ROOT, "experiments", "results_black.json"), encoding="utf-8") as f:
         return jsonify(__import__("json").load(f))
 
 
