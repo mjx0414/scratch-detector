@@ -6,6 +6,13 @@
 
 ![效果预览](web/preview.png)
 
+### 🌐 在线体验（不用装环境，点开就能看）
+
+**[点这里打开在线展示页](https://mjx0414.github.io/scratch-detector/)**
+
+页面由 GitHub Pages 托管，可选择 4 张不同屏幕的样例图查看检测效果。
+说明：在线页展示的是**预先算好的真实检测结果**，用于快速了解效果；想上传自己的照片实时检测，请按下面的方法在本地运行。
+
 ---
 
 ## ✨ 亮点
@@ -64,7 +71,12 @@ scratch-detector/
 ├── benchmark.py            # 真实验证：对比检测结果与真值，算准确率
 ├── examples/               # 测试图 + ground_truth.json 真值
 ├── experiments/results.json# 真实验证结果（由 benchmark 生成）
-├── web/                    # 前端网页
+├── web/                    # 前端网页（本地实时检测）
+├── docs/                   # GitHub Pages 静态展示页（在线体验）
+│   ├── index.html
+│   ├── data.js             # 预计算结果数据
+│   └── examples/           # 4 张展示用样例图
+├── build_static_page.py    # 生成静态展示页数据
 ├── requirements.txt
 └── README.md
 ```
