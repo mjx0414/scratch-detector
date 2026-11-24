@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>手机屏幕划痕检测 · 项目展示</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: "Microsoft YaHei", "PingFang SC", sans-serif; background: #f5f7fa; color: #222; line-height: 1.6; }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px 60px; }
+
+  header { background: #1F3A5F; color: #fff; padding: 38px 0 32px; }
+  header .wrap { padding-bottom: 0; }
+  header h1 { font-size: 30px; font-weight: 700; }
+  header p { margin-top: 10px; font-size: 15px; color: #c8d6e5; }
+  .badge { display: inline-block; margin-top: 16px; padding: 6px 14px; border: 1px solid #6b8bb0;
+           border-radius: 20px; font-size: 13px; color: #dbe8f5; }
+
+  section { margin-top: 34px; }
+  h2 { font-size: 21px; color: #1F3A5F; padding-bottom: 10px; border-bottom: 2px solid #1F3A5F; margin-bottom: 18px; }
+
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .stat { background: #fff; border: 1px solid #dde3e9; border-radius: 8px; padding: 20px; text-align: center; }
+  .stat b { display: block; font-size: 30px; color: #1F3A5F; }
+  .stat span { font-size: 13px; color: #5a6b7c; }
+  .stat-note { margin-top: 12px; font-size: 13px; color: #7a8794; }
+
+  .workbench { display: grid; grid-template-columns: 1.1fr 1fr; gap: 22px; }
+  .panel { background: #fff; border: 1px solid #dde3e9; border-radius: 8px; padding: 20px; }
+  .panel h3 { font-size: 17px; color: #1F3A5F; margin-bottom: 14px; }
+
+  .thumbs { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 16px; }
+  .thumb { width: 66px; cursor: pointer; border: 2px solid transparent; border-radius: 6px; overflow: hidden; }
+  .thumb img { width: 100%; display: block; }
+  .thumb.active { border-color: #1F3A5F; }
+  .thumb span { display: block; font-size: 11px; text-align: center; color: #5a6b7c; padding: 3px 0; background: #f5f7fa; }
+
+  .stage { position: relative; width: 100%; max-width: 340px; margin: 0 auto; }
+  .stage img { width: 100%; display: block; border: 1px solid #dde3e9; }
+  .stage svg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
+  .figcap { text-align: center; font-size: 12px; color: #8a97a5; margin-top: 8px; }
+
+  .result-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+  .result-count { background: #eaf1f8; color: #1F3A5F; padding: 3px 12px; border-radius: 14px; font-size: 13px; font-weight: 700; }
+  .result-item { border: 1px solid #e3e8ee; border-radius: 6px; padding: 12px 14px; margin-bottom: 10px; }
+  .result-top { display: flex; justify-content: space-between; align-items: center; }
+  .result-id { font-weight: 700; }
+  .badge { font-size: 11px; background: #f0f3f6; color: #5a6b7c; padding: 2px 9px; border-radius: 10px; }
+  .metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 8px; }
+  .metrics div { font-size: 11px; color: #7a8794; }
+  .metrics b { display: block; font-size: 16px; color: #222; }
+
+  .notice { margin-top: 16px; background: #fff8e6; border: 1px solid #f0dca0; border-radius: 6px;
+            padding: 12px 16px; font-size: 13px; color: #7a5c10; }
+
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .step { background: #fff; border: 1px solid #dde3e9; border-radius: 8px; padding: 18px; }
+  .step .n { width: 30px; height: 30px; border-radius: 15px; background: #1F3A5F; color: #fff;
+             display: flex; align-items: center; justify-content: center; font-weight: 700; margin-bottom: 10px; }
+  .step h3 { font-size: 15px; color: #1F3A5F; margin-bottom: 6px; }
+  .step p { font-size: 13px; color: #5a6b7c; }
+
+  table { width: 100%; border-collapse: collapse; background: #fff; font-size: 13px; }
+  th, td { border: 1px solid #dde3e9; padding: 9px 12px; text-align: center; }
+  th { background: #eaf1f8; color: #1F3A5F; }
+  .good { color: #1a7f4b; font-weight: 700; }
+  .honest { margin-top: 12px; font-size: 13px; color: #5a6b7c; background: #f0f4f8; padding: 12px 16px; border-radius: 6px; }
+
+  .code { background: #1f2733; color: #d6e2ee; padding: 16px 18px; border-radius: 6px;
+          font-family: Consolas, monospace; font-size: 13px; line-height: 1.9; overflow-x: auto; }
+  footer { text-align: center; color: #8a97a5; font-size: 12px; margin-top: 40px; }
+
+  @media (max-width: 860px) {
+    .stats, .steps { grid-template-columns: repeat(2, 1fr); }
+    .workbench { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <h1>手机屏幕划痕检测</h1>
+    <p>基于 OpenCV 形态学对比度与旋转矩形量测 · 无需训练数据</p>
+    <span class="badge">静态展示版 · 检测结果由算法预先计算</span>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section>
+    <h2>实验指标</h2>
+    <div class="stats" id="stats"></div>
+    <div class="stat-note" id="statNote"></div>
+  </section>
+
+  <section>
+    <h2>检测效果演示</h2>
+    <div class="workbench">
+      <div class="panel">
+        <h3>选一张屏幕照片</h3>
+        <div class="thumbs" id="thumbs"></div>
+        <div class="stage" id="stage">
+          <img id="target" alt="待检测屏幕">
+          <svg id="overlay" viewBox="0 0 900 1600" preserveAspectRatio="none"></svg>
+        </div>
+        <div class="figcap" id="figcap">检测框由算法计算，非人工标注</div>
+      </div>
+      <div class="panel">
+        <div class="result-head">
+          <h3 style="margin:0">检测到的划痕</h3>
+          <span class="result-count" id="resultCount">—</span>
+        </div>
+        <div id="results"></div>
+        <div class="notice">
+          本页面为<b>静态展示</b>：上方结果由算法在本地预先计算后写入页面，用于演示效果。
+          想上传自己的照片实时检测，请按下方方法在本地运行。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>算法怎么做的</h2>
+    <div class="steps" id="steps"></div>
+  </section>
+
+  <section>
+    <h2>真实验证</h2>
+    <table>
+      <thead><tr><th>测试图</th><th>真值划痕</th><th>正确检出</th><th>检出率</th><th>准确率</th><th>耗时</th></tr></thead>
+      <tbody id="expBody"></tbody>
+    </table>
+    <div class="honest" id="honest"></div>
+  </section>
+
+  <section>
+    <h2>在本地实时检测</h2>
+    <div class="code">git clone https://github.com/mjx0414/scratch-detector.git
+cd scratch-detector
+pip install -r requirements.txt
+python app.py
+浏览器打开 http://localhost:3300</div>
+    <div class="honest">本地运行后即可上传自己的照片、拖动灵敏度滑块实时检测。项目完全开源，含测试图、真值数据与验证脚本。</div>
+  </section>
+
+  <footer>马佳欣 · AI机器视觉培训班 · 源码：github.com/mjx0414/scratch-detector</footer>
+</div>
+
+<script src="data.js"></script>
+<script>
+(function () {
+  const D = window.PRECOMPUTED;
+  const PALETTE = ["#e11d48", "#f59e0b", "#8b5cf6", "#0ea5e9", "#10b981", "#ec4899"];
+  const $ = (id) => document.getElementById(id);
+
+  // 指标
+  const s = D.results.summary;
+  $("stats").innerHTML = [
+    [(s.recall * 100).toFixed(0) + "%", "划痕检出率"],
+    [(s.precision * 100).toFixed(0) + "%", "判断准确率"],
+    [s.meanLengthErrorPx + "px", "长度测量误差"],
+    [s.avgTimeMs + "ms", "单张耗时"],
+  ].map(([v, l]) => `<div class="stat"><b>${v}</b><span>${l}</span></div>`).join("");
+  $("statNote").textContent = `指标来自 ${s.totalTruth} 道人工标注划痕的真实实验 · 检出 ${s.totalMatched}/${s.totalTruth}`;
+
+  // 缩略图
+  $("thumbs").innerHTML = D.examples.map((e, i) =>
+    `<div class="thumb ${i === 0 ? 'active' : ''}" data-i="${i}">
+       <img src="${e.src}" alt="${e.name}"><span>${e.name.replace('.jpg','')}</span>
+     </div>`).join("");
+
+  function svg(tag, attrs) {
+    const el = document.createElementNS("http://www.w3.org/2000/svg", tag);
+    for (const k in attrs) el.setAttribute(k, attrs[k]);
+    return el;
+  }
+
+  function show(i) {
+    const e = D.examples[i];
+    document.querySelectorAll(".thumb").forEach(x => x.classList.toggle("active", Number(x.dataset.i) === i));
+    const img = $("target");
+    img.onload = () => {
+      const ov = $("overlay");
+      ov.setAttribute("viewBox", `0 0 ${e.width} ${e.height}`);
+      ov.innerHTML = "";
+      e.scratches.forEach((sc, k) => {
+        const c = PALETTE[k % PALETTE.length];
+        const [x1, y1, x2, y2] = sc.box;
+        ov.appendChild(svg("rect", { x: x1, y: y1, width: Math.max(2, x2-x1), height: Math.max(2, y2-y1),
+          fill: c, "fill-opacity": 0.10, stroke: c, "stroke-width": 8 }));
+        const fs = 34;
+        const label = `划痕${k+1} · ${sc.length}px`;
+        const tx = x1, ty = y1 - fs * 1.3 < 0 ? y1 + 8 : y1 - fs * 1.3;
+        ov.appendChild(svg("rect", { x: tx, y: ty, width: label.length * fs * 0.62 + 16, height: fs * 1.5, rx: 4, fill: c }));
+        const t = svg("text", { x: tx + 8, y: ty + fs * 1.1, fill: "#fff", "font-size": fs, "font-weight": 800,
+          "font-family": "Microsoft YaHei,sans-serif" });
+        t.textContent = label; ov.appendChild(t);
+      });
+    };
+    img.src = e.src;
+    $("figcap").textContent = `${e.name} · ${e.count} 道划痕 · 检测耗时 ${e.tookMs}ms · 框由算法计算`;
+
+    $("resultCount").textContent = e.count + " 道";
+    $("results").innerHTML = e.scratches.map((sc, k) => `
+      <div class="result-item">
+        <div class="result-top">
+          <span class="result-id" style="color:${PALETTE[k % PALETTE.length]}">划痕 ${k+1}</span>
+          <span class="badge">清晰度 ${sc.contrast}</span>
+        </div>
+        <div class="metrics">
+          <div><b>${sc.length} px</b>长度</div>
+          <div><b>${sc.width} px</b>宽度</div>
+          <div><b>${sc.angle}°</b>方向</div>
+        </div>
+      </div>`).join("");
+  }
+
+  document.querySelectorAll(".thumb").forEach(t => t.onclick = () => show(Number(t.dataset.i)));
+
+  // 算法四步
+  const stepData = [
+    ["去掉明暗渐变", "用形态学估计局部背景并减去，只留下突然变化的细节。"],
+    ["连接断开的细线", "划痕常断成几截，用小核闭运算接成完整一道。"],
+    ["旋转矩形量尺寸", "对候选线求最小外接矩形，量长度、宽度和方向。"],
+    ["筛掉反光噪点", "按长宽比与面积筛选，只留又细又长的真划痕。"],
+  ];
+  $("steps").innerHTML = stepData.map(([h, p], i) =>
+    `<div class="step"><div class="n">${i+1}</div><h3>${h}</h3><p>${p}</p></div>`).join("");
+
+  // 实验表格
+  $("expBody").innerHTML = D.results.perImage.map(p =>
+    `<tr><td>${p.image}</td><td>${p.truth}</td><td>${p.matched}</td>
+     <td class="good">${(p.recall*100).toFixed(0)}%</td>
+     <td class="good">${(p.precision*100).toFixed(0)}%</td><td>${p.tookMs}ms</td></tr>`).join("");
+  $("honest").innerHTML = `说明：测试图为程序生成的干净场景，在上面的模拟屏幕上合成 ${s.totalTruth} 道已知划痕，
+    算法逐道检出 ${s.totalMatched} 道，长度平均误差 ${s.meanLengthErrorPx}px。真实屏幕的指纹、贴膜与曲面反光会干扰结果，需调节灵敏度。数据由 benchmark.py 真实计算，未修饰。`;
+
+  show(0);
+})();
+</script>
+</body>
+</html>
