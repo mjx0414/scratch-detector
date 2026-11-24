@@ -1,0 +1,49 @@
+{
+  "summary": {
+    "totalTruth": 19,
+    "totalDetected": 19,
+    "totalMatched": 19,
+    "recall": 1.0,
+    "precision": 1.0,
+    "meanLengthErrorPx": 3.68,
+    "avgTimeMs": 36.0
+  },
+  "perImage": [
+    {
+      "image": "black_screen_1.jpg",
+      "truth": 5,
+      "detected": 5,
+      "matched": 5,
+      "recall": 1.0,
+      "precision": 1.0,
+      "tookMs": 43.1
+    },
+    {
+      "image": "black_screen_2.jpg",
+      "truth": 5,
+      "detected": 5,
+      "matched": 5,
+      "recall": 1.0,
+      "precision": 1.0,
+      "tookMs": 31.7
+    },
+    {
+      "image": "black_screen_3.jpg",
+      "truth": 4,
+      "detected": 4,
+      "matched": 4,
+      "recall": 1.0,
+      "precision": 1.0,
+      "tookMs": 30.2
+    },
+    {
+      "image": "black_screen_4.jpg",
+      "truth": 5,
+      "detected": 5,
+      "matched": 5,
+      "recall": 1.0,
+      "precision": 1.0,
+      "tookMs": 39.0
+    }
+  ]
+}
